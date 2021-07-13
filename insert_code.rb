@@ -1,6 +1,6 @@
 #!/user/bin/env ruby
 puts "ーーーーーーーーーーーーーーーーーーーー"
 $stdin.each do|line|
-  puts line.gsub(/ /,"  ")
+  puts line.gsub(/  /,"　　")
 end
 puts "ーーーーーーーーーーーーーーーーーーーー"
