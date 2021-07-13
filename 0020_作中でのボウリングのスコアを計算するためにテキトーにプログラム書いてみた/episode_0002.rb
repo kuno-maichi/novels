@@ -12,7 +12,7 @@ def score(frames)
       if a == 10
         total += strike(rest, frame_count)
       elsif a + b == 10
-        total += apre(rest, frame_count)
+        total += spare(rest, frame_count)
       else
         total += a + b
       end
