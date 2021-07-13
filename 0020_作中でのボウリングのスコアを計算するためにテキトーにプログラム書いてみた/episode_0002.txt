@@ -1,0 +1,65 @@
+【タイトル】
+Ruby版も書いてみた
+
+【公開状態】
+公開済
+
+【作成日時】
+2020-07-27 17:09:10（+09:00）
+
+【公開日時】
+2020-07-27 17:09:12（+09:00）
+
+【更新日時】
+2020-07-28 00:27:06（+09:00）
+
+【文字数】
+448文字
+
+【本文（46行）】
+Rubyでも書いてみました。ほぼベタ移植ですが……。
+
+def score(frames)
+　　rest = frames
+　　total = 0
+　　frame_count = 1
+　　while rest != []
+　　　　current_frame = rest[0]
+　　　　a, b = current_frame
+　　　　if frame_count == 10
+　　　　　　c = current_frame[2]
+　　　　　　if a == 10
+　　　　　　　　total += 10 + b + c
+　　　　　　elsif a + b == 10
+　　　　　　　　total += 10 + c
+　　　　　　else
+　　　　　　　　total += a + b
+　　　　　　end
+　　　　else
+　　　　　　if a == 10
+　　　　　　　　total += 10 + rest[1][0] + rest[1][1]
+　　　　　　elsif a + b == 10
+　　　　　　　　total += 10 + rest[1][0]
+　　　　　　else
+　　　　　　　　total += a + b
+　　　　　　end
+　　　　　　frame_count += 1
+　　　　end
+　　　　rest = rest[1...]
+　　end
+　　total
+end
+
+frames = [
+　　　　[0, 0],
+　　　　[0, 0],
+　　　　[0, 0],
+　　　　[0, 0],
+　　　　[0, 0],
+　　　　[0, 0],
+　　　　[0, 0],
+　　　　[135, 0],
+　　　　[10, 0],
+　　　　[10, 0, 0]
+　　　　]
+puts score(frames) # 165
