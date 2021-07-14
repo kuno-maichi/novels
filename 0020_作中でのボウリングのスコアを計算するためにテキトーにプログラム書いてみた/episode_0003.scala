@@ -1,6 +1,7 @@
+val Skipped = -1
 def lazyListOf(data : List[List[Int]]): LazyList[Int] = data match {
   case Nil => LazyList.empty
-  case frame::next => frame.filter{_ != 0}.to(LazyList) #::: lazyListOf(next)
+  case frame::next => frame.filter{_ != Skipped}.to(LazyList) #::: lazyListOf(next)
 }
 def makeFrames(scores: LazyList[Int]): LazyList[Int] = scores match {
   case 10 #:: (next@(x#::y#::_)) => (10 + x + y) #:: makeFrames(next)
@@ -9,15 +10,15 @@ def makeFrames(scores: LazyList[Int]): LazyList[Int] = scores match {
 }
 
 val datum = List(
-  List(10, 0),
-  List(10, 0),
-  List(10, 0),
-  List(10, 0),
-  List(10, 0),
-  List(10, 0),
-  List(10, 0),
-  List(10, 0),
-  List(10, 0),
+  List(10, Skipped),
+  List(10, Skipped),
+  List(10, Skipped),
+  List(10, Skipped),
+  List(10, Skipped),
+  List(10, Skipped),
+  List(10, Skipped),
+  List(10, Skipped),
+  List(10, Skipped),
   List(10, 10, 10)
 )
 
